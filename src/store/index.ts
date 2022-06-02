@@ -1,9 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit";
-import numberSlice from "./slice/number";
+import { combineReducers, createStore } from "@reduxjs/toolkit";
+import countSlice, { initialCountSliceStateInterface } from "./slice/countSlice";
 
-const store = configureStore({
-  reducer: {
-    number: numberSlice.reducer,
-  },
+export interface RootState {
+  countSlice: initialCountSliceStateInterface;
+}
+
+const rootReducer = combineReducers({
+  countSlice: countSlice,
 });
-export default store;
+
+const store = createStore(rootReducer);
+
+export { store };

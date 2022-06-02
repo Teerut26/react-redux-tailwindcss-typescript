@@ -1,19 +1,18 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
-import { numberActions } from "./store/slice/number";
+import { countActions } from "./store/slice/countSlice";
+import { RootState } from "./store";
 
 function App() {
   const dispatch = useDispatch();
-  const number = useSelector((state: any) => state.number.count);
+  const number = useSelector((state: RootState) => state.countSlice.count);
 
   const increment = () => {
-    dispatch(numberActions.increment())
+    dispatch(countActions.increase())
   };
 
   const decrement = () => {
-    dispatch(numberActions.decrement())
+    dispatch(countActions.decrease())
   };
 
   return (
